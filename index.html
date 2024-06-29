@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <style>
+        .container{
+            height: 600px;
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: blanchedalmond;
+
+        }
+
+        .box{
+            background-color: steelblue;
+            border: 2px solid gray;
+            height: 450px;
+            width: auto;
+            padding: 20px 40px;
+        }
+        .upper input{
+            font-size: 20px;
+            border-radius: 7px;
+            border-style: outset;
+            border-color: grey;
+            margin-left: 13%;
+            font-weight: bold;
+        }
+        h1{
+            font-size: 30px;
+            background-color: skyblue;
+            padding: 10px;
+            width: auto;
+            text-align: center;
+            color: whitesmoke;
+            border-radius: 20px;
+        }
+        button{
+            margin-left: 33%;
+            margin-top: 5%;
+            background-color: navy;
+            color: whitesmoke;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 10px;
+            padding: 2px 4px;
+        }
+        .lower{
+            border: 2px solid grey;
+            height: 250px;
+            width: 250px;
+            margin-top: 5%;
+            margin-left: 20%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="upper">
+                <h1>QR Code Generator</h1>
+                <input type="text" name="" id="">
+                <button>QR Code</button>
+            </div>
+            <div class="lower">
+                <p></p>
+                <img src="" alt="">
+            </div>
+        </div>
+    </div>
+    <script>
+        let QRbutton = document.querySelector("button");
+        
+        QRbutton.addEventListener("click", function(){
+            let inputBox = document.querySelector("input");
+            let QRimage = document.querySelector("img");
+            let value = inputBox.value;
+            console.log("running");
+            if(inputBox.value == ""){
+                document.querySelector("p").innerHTML = "Please <br> Enter <br> Text";
+                document.querySelector("p").style.fontSize = "40px";
+                document.querySelector("p").style.textAlign = "center";
+            }else{
+                document.querySelector("p").innerHTML = "";
+                QRimage.src = ` https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${value} `;
+                QRimage.style.height = "200px";
+                QRimage.style.width = "200px";
+                QRimage.style.transform = "translate(25px, 10px)";
+                
+            }
+        });
+
+    </script>
+</body>
+</html>
